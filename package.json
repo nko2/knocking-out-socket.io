@@ -1,0 +1,8 @@
+{
+  "name": "example",
+  "version": "0.0.1",
+  "dependencies": {
+    "socket.io": "0.7.7" ,
+    "request": "2.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+    <script>
+      var socket = io.connect();
+
+      $(function () {
+        socket.on('tweets', function (tweets) {
+          $.each(tweets, function (i, tweet) {
+            $('#tweets').prepend($('<li>').text(tweet));
+          });
+        });
+
+        socket.on('someone connected', function () {
+          $('body').prepend('<p>someone just connected!</p>');
+        });
+
+        socket.emit('some event');
+      });
+    </script>
+  </head>
+  <body>
+    <h1>tweets</h1>
+    <ul id="tweets"></ul>
+  </body>
+</html>
